@@ -218,6 +218,13 @@ class RailsTest < Test::Unit::TestCase
     @cache.fetch("y", :foo => :bar){ 1 }
   end
 
+  def test_clear
+    @cache.write("x", 1)
+    assert_equal 1, @cache.read("x")
+    assert_equal nil, @cache.clear
+    assert_equal nil, @cache.read("x")
+  end
+
   private
 
   def key

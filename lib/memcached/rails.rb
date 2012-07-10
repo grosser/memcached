@@ -152,10 +152,11 @@ class Memcached
     rescue NotStored
     end
 
-    alias :flush_all :flush
+    alias_method :flush_all, :flush
+    alias_method :clear, :flush
 
-    alias :"[]" :get
-    alias :"[]=" :set
+    alias_method :"[]", :get
+    alias_method :"[]=", :set
 
     # Return an array of server objects.
     def servers
